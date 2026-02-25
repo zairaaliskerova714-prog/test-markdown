@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Швейцария | Сердце Альп</title>
+  <!-- Подключение шрифта 'Inter' для современного вида и 'Playfair Display' для элегантности -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок (бесплатный) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* СБРОС И БАЗОВЫЕ НАСТРОЙКИ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1e2a3a;
+      line-height: 1.5;
+      background-color: #fefefe;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* НАВИГАЦИЯ (простая, без прилипания, чтобы не перегружать) */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #003d4d;
+    }
+    .logo i {
+      color: #b11226;
+      font-size: 24px;
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #1e2a3a;
+      transition: color 0.2s;
+      font-size: 16px;
+    }
+    .nav-links a:hover {
+      color: #b11226;
+    }
+
+    /* КНОПКИ */
+    .btn {
+      display: inline-block;
+      background-color: #b11226;
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      transition: background-color 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px -6px rgba(177, 18, 38, 0.25);
+    }
+    .btn:hover {
+      background-color: #8f0e1f;
+      transform: scale(1.02);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #1e2a3a;
+      box-shadow: inset 0 0 0 2px #1e2a3a;
+      box-shadow: 0 0 0 2px #1e2a3a;
+      margin-left: 12px;
+    }
+    .btn-outline:hover {
+      background: #1e2a3a;
+      color: white;
+    }
+
+    /* HERO СЕКЦИЯ (альпийский пейзаж) */
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 45, 65, 0.5), rgba(0, 20, 30, 0.4)), url('https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?q=80&w=1812&auto=format&fit=crop') center/cover no-repeat;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      margin-bottom: 20px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 700px;
+      padding: 60px 24px;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
+    section {
+      padding: 90px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: #003d4d;
+    }
+    .section-sub {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      color: #3a4a5a;
+      font-size: 1.2rem;
+    }
+
+    /* СЕТКА ФАКТОВ */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .fact-card {
+      background: white;
+      padding: 40px 25px;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -10px rgba(0,45,65,0.1);
+      text-align: center;
+      transition: 0.2s;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .fact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 50px -12px rgba(177, 18, 38, 0.15);
+    }
+    .fact-icon {
+      font-size: 3.2rem;
+      color: #b11226;
+      margin-bottom: 25px;
+    }
+    .fact-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .fact-card p {
+      color: #2f3f4f;
+    }
+
+    /* ГАЛЕРЕЯ (красивая сетка) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .gallery-item {
+      border-radius: 30px;
+      overflow: hidden;
+      height: 300px;
+      box-shadow: 0 25px 40px -15px rgba(0,0,0,0.25);
+      transition: 0.3s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 50px -10px #b1122633;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ЦИТАТА / БЛОК О ШВЕЙЦАРИИ */
+    .quote-block {
+      background: linear-gradient(145deg, #f0f5fa, #ffffff);
+      border-radius: 60px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: inset 0 1px 10px rgba(0,0,0,0.02);
+    }
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      font-style: italic;
+      color: #1a2e3f;
+    }
+    .quote-author {
+      font-weight: 500;
+      color: #b11226;
+      letter-spacing: 1px;
+    }
+
+    /* ТАБЛИЦА (кантоны/интересные цифры) */
+    .info-table-wrap {
+      background: #ffffff;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(0,61,77,0.05);
+      padding: 30px;
+      margin-top: 40px;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .info-table th {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 16px 8px 8px 8px;
+      border-bottom: 2px solid #b11226;
+      color: #003d4d;
+    }
+    .info-table td {
+      padding: 14px 8px;
+      border-bottom: 1px solid #dee2e6;
+      font-weight: 400;
+    }
+    .info-table tr:last-child td {
+      border-bottom: none;
+    }
+    .info-table i {
+      color: #b11226;
+      width: 24px;
+      margin-right: 10px;
+    }
+
+    /* ФУТЕР */
+    footer {
+      background-color: #0e1c27;
+      color: #cdd9e5;
+      padding: 60px 0 30px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 15px;
+    }
+    .footer-logo i {
+      color: #e63b4b;
+    }
+    .footer-about {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+    .footer-links h4, .footer-social h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: #b0c4d9;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 1.8rem;
+    }
+    .social-icons a {
+      color: #b0c4d9;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .social-icons a:hover {
+      color: #b11226;
+      transform: translateY(-3px);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #1f3340;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* АДАПТАЦИЯ */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 3rem; }
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 20px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.5rem; }
+      .section-title { font-size: 2.2rem; }
+      .btn-outline { margin-left: 0; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- НАВИГАЦИЯ (лаконичная) -->
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-mountain"></i> Switzerland
+      </div>
+      <div class="nav-links">
+        <a href="#">Главная</a>
+        <a href="#">О стране</a>
+        <a href="#">Кантоны</a>
+        <a href="#">Кухня</a>
+        <a href="#">Туры</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HERO БЛОК -->
+  <section class="hero" style="margin-top: 0; padding: 0;">
+    <div class="container hero-content">
+      <h1>Швейцария. <br>Там, где горы касаются неба</h1>
+      <p>Страна с чистейшими озёрами, величественными Альпами и многовековыми традициями. Откройте для себя настоящую сказку в центре Европы.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn"><i class="fas fa-map-marked-alt" style="margin-right: 8px;"></i>Планировать поездку</a>
+        <a href="#" class="btn btn-outline"><i class="fas fa-video" style="margin-right: 8px;"></i>Смотреть видео</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОРОТКИЕ ФАКТЫ / ПРЕИМУЩЕСТВА -->
+  <div class="container">
+    <section>
+      <h2 class="section-title">Швейцария в деталях</h2>
+      <div class="section-sub">Четыре языка, 26 кантонов, 12 000 озёр и самая высокая железная дорога в Европе. Всё это — уникальная конфедерация.</div>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <div class="fact-icon"><i class="fas fa-flag-checkered"></i></div>
+          <h3>Нейтралитет</h3>
+          <p>Страна не участвует в войнах с 1815 года. Здесь располагается штаб-квартира ООН и Красного Креста.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon"><i class="fas fa-train"></i></div>
+          <h3>Транспорт</h3>
+          <p>Знаменитый Швейцарский поезд "Glacier Express" — самый медленный экспресс мира, соединяющий Церматт и Санкт-Мориц.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon"><i class="fas fa-cheese"></i></div>
+          <h3>Сыры и шоколад</h3>
+          <p>Более 450 сортов сыра и лучший в мире шоколад. А фондю — национальное блюдо, которое объединяет.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon"><i class="fas fa-mountain"></i></div>
+          <h3>Маттерхорн</h3>
+          <p>Самая фотографируемая гора в мире. Её силуэт узнаваем и стал символом швейцарских Альп.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ГАЛЕРЕЯ ЖИВОПИСНЫХ МЕСТ (unsplash лицензия free) -->
+  <div class="container">
+    <section style="padding-top: 30px;">
+      <h2 class="section-title">Визуальная поэзия</h2>
+      <div class="section-sub">Горы, кристальные озёра и живописные деревушки. Швейцария вдохновляет.</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1770&auto=format&fit=crop" alt="Люцерн и озеро"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1770&auto=format&fit=crop" alt="Горное озеро в Альпах"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1770&auto=format&fit=crop" alt="Церматт и Маттерхорн"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?q=80&w=1715&auto=format&fit=crop" alt="Лозанна и виноградники"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542272201-b1ca555f8505?q=80&w=1770&auto=format&fit=crop" alt="Зимний курорт"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1530126483408-aa533e55bdb2?q=80&w=1770&auto=format&fit=crop" alt="Река Ааре в Берне"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ЦИТАТА О ШВЕЙЦАРИИ (атмосферный блок) -->
+  <div class="container">
+    <section style="padding-top: 30px;">
+      <div class="quote-block">
+        <div class="quote-text">
+          <i class="fas fa-quote-left" style="color: #b11226; opacity: 0.3; font-size: 3rem; margin-right: 10px;"></i>
+          В Швейцарии всё работает как часы. Но сами часы здесь останавливаются, чтобы вы могли насладиться видом на горы.
+        </div>
+        <div class="quote-author">— неизвестный путешественник</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ИНТЕРЕСНЫЕ ФАКТЫ: КАНТОНЫ (таблица с иконками) -->
+  <div class="container">
+    <section style="padding-top: 30px;">
+      <h2 class="section-title">Кантоны и их жемчужины</h2>
+      <div class="section-sub">Четыре языковых региона и удивительное разнообразие. Несколько фактов для вдохновения.</div>
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Кантон / Регион</th>
+              <th>Столица</th>
+              <th>Знаменит</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fas fa-flag"></i> Граубюнден</td>
+              <td>Кур</td>
+              <td>Курорт Санкт-Мориц, Ледниковый экспресс</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-flag"></i> Берн</td>
+              <td>Берн</td>
+              <td>Старый город (ЮНЕСКО), медвежий парк</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-flag"></i> Цюрих</td>
+              <td>Цюрих</td>
+              <td>Банковский центр, Банхофштрассе, озеро Цюрих</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-flag"></i> Вале / Валлис</td>
+              <td>Сьон</td>
+              <td>Гора Маттерхорн, курорт Церматт</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-flag"></i> Тичино</td>
+              <td>Беллинцона</td>
+              <td>Средиземноморский колорит, замки, озеро Лугано</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align: right; margin-top: 20px; font-style: italic; opacity: 0.7;">* Всего 26 кантонов — каждый уникален.</div>
+    </section>
+  </div>
+
+  <!-- ПРИЗЫВ К ДЕЙСТВИЮ (секция перед футером) -->
+  <div class="container">
+    <section style="padding: 50px 0 80px;">
+      <div style="background: linear-gradient(125deg, #003d4d 0%, #1f636d 100%); border-radius: 70px; padding: 70px 40px; color: white; text-align: center;">
+        <h2 style="font-size: 2.8rem; margin-bottom: 20px;">Готовы к швейцарскому путешествию?</h2>
+        <p style="font-size: 1.3rem; max-width: 650px; margin: 0 auto 40px; opacity: 0.9;">Билеты, отели, горнолыжные курорты — поможем спланировать идеальный маршрут.</p>
+        <a href="#" class="btn" style="background-color: white; color: #003d4d; box-shadow: 0 15px 25px -8px rgba(0,0,0,0.4);"><i class="fas fa-envelope"></i> Получить консультацию</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ФУТЕР -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo"><i class="fas fa-mountain"></i> Switzerland.ch</div>
+          <p class="footer-about">Швейцария — сердце Альп. Здесь традиции встречаются с инновациями, а природа поражает величием. Ваш гид в мире швейцарской красоты.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="#">О стране</a></li>
+            <li><a href="#">Кантоны</a></li>
+            <li><a href="#">Горнолыжные курорты</a></li>
+            <li><a href="#">Гастрономия</a></li>
+            <li><a href="#">Маршруты</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Поддержка</h4>
+          <ul>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Политика приватности</a></li>
+            <li><a href="#">Условия использования</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Следите за нами</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+          <p style="margin-top: 25px;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> hello@switzerland.ch</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Switzerland. Все права защищены. Сделано с любовью к Альпам.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
